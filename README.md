@@ -116,8 +116,6 @@ If you'd like to connect or collaborate:
 
 Released under the MIT License. See LICENSE for details.
 
-⭐ If you like this project
-
 🌟 Star the repository
 
 🐛 Open an issue
@@ -125,5 +123,6 @@ Released under the MIT License. See LICENSE for details.
 🔧 Suggest a feature
 
 🎉 Built with ❤️ by Chayan Ghosh
+
 
 A real-world GenAI Project for summarizing chat logs with a beautiful web interface.
