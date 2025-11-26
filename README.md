@@ -125,4 +125,3 @@ Released under the MIT License. See LICENSE for details.
 🎉 Built with ❤️ by Chayan Ghosh
 
 
-A real-world GenAI Project for summarizing chat logs with a beautiful web interface.
