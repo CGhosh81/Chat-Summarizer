@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Summarizer - Web Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>💬 Chat Summarizer</h1>
+                    <p class="subtitle">Summarize conversations instantly with AI</p>
+                </div>
+                <div class="status-section">
+                    <div class="status-item">
+                        <span class="status-label">Model Status:</span>
+                        <span id="modelStatus" class="status-badge loading">Loading...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Device:</span>
+                        <span id="deviceStatus" class="status-badge">Checking...</span>
+                    </div>
+                    <button id="reloadBtn" class="btn btn-secondary" onclick="reloadModel()">
+                        🔄 Reload Model
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel - Input -->
+            <section class="panel input-panel">
+                <div class="panel-header">
+                    <h2>📝 Chat Input</h2>
+                    <p class="panel-subtitle">Paste your conversation below</p>
+                </div>
+                
+                <textarea 
+                    id="inputText" 
+                    class="textarea" 
+                    placeholder="Paste your chat conversation here...&#10;&#10;Example:&#10;User: My code has a null pointer exception&#10;Agent: Which line?&#10;User: Line 42&#10;..."
+                ></textarea>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="loadFromFile()">
+                        📂 Load from File
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearInput()">
+                        🗑️ Clear
+                    </button>
+                    <span id="charCount" class="char-count">0 characters</span>
+                </div>
+            </section>
+
+            <!-- Right Panel - Output -->
+            <section class="panel output-panel">
+                <div class="panel-header">
+                    <h2>✨ Summary Output</h2>
+                    <p class="panel-subtitle">Generated summary will appear here</p>
+                </div>
+
+                <!-- Settings -->
+                <div class="settings-section">
+                    <div class="setting-group">
+                        <label for="maxLength">Max Summary Length:</label>
+                        <div class="slider-container">
+                            <input 
+                                type="range" 
+                                id="maxLength" 
+                                class="slider" 
+                                min="30" 
+                                max="200" 
+                                value="130"
+                                oninput="updateLengthLabel()"
+                            >
+                            <span id="lengthLabel" class="slider-value">130 tokens</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="numBeams">Number of Beams:</label>
+                        <select id="numBeams" class="select">
+                            <option value="2">2 (Faster)</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4 (Balanced)</option>
+                            <option value="5">5</option>
+                            <option value="6">6 (Slower, Better Quality)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Output Text -->
+                <textarea 
+                    id="outputText" 
+                    class="textarea" 
+                    placeholder="Your summary will appear here..."
+                    readonly
+                ></textarea>
+
+                <!-- Output Actions -->
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="saveSummary()" id="saveBtn">
+                        💾 Save Summary
+                    </button>
+                    <button class="btn btn-secondary" onclick="copyToClipboard()" id="copyBtn">
+                        📋 Copy
+                    </button>
+                    <span id="charCountOutput" class="char-count">0 characters</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Action Button -->
+        <section class="action-section">
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p id="progressText">Processing...</p>
+            </div>
+            <button 
+                id="summarizeBtn" 
+                class="btn btn-primary btn-large" 
+                onclick="summarizeText()"
+            >
+                ✨ Summarize Chat
+            </button>
+            <p id="errorMessage" class="error-message" style="display: none;"></p>
+            <p id="successMessage" class="success-message" style="display: none;"></p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <strong>Chayan Ghosh</strong> — AI Engineer & Developer
+                <div class="footer-contacts">
+                    <a href="mailto:chayan07ghosh@gmail.com">chayan07ghosh@gmail.com</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.chayanghosh.com/" target="_blank">Portfolio</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.linkedin.com/in/chayan-ghosh07/recent-activity/all/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div>Demo Video:</div>
+                <a class="video-link" href="https://drive.google.com/file/d/1pM-ir9_qf6cGBvw2IQcFUXLywdIyesSd/view?usp=sharing" target="_blank">Watch the GUI demo</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden file input for loading from file -->
+    <input type="file" id="fileInput" style="display: none;" accept=".txt" onchange="handleFileSelect()">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
