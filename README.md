@@ -1,74 +1,78 @@
 🚀 Chat Summarizer (Web UI) — Fine-Tuned T5 Model
 
-A sleek, production-ready web application powered by a fine-tuned T5 model that transforms long multi-turn chats into clean, concise summaries.
-Designed for customer support teams, automation pipelines, and GenAI assistants.
+A sleek, production-ready web application powered by a fine-tuned T5 model that transforms long, multi-turn chats into clean, concise summaries.
+Designed for customer support, automation pipelines, and GenAI assistants.
 
-<table> <tr><td><strong>🌐 Frontend:</strong></td><td>HTML + CSS + JS (Flask Web UI)</td></tr> <tr><td><strong>🧠 Model:</strong></td><td>Fine-tuned T5 (HuggingFace)</td></tr> <tr><td><strong>⚙️ Backend:</strong></td><td>Python · PyTorch · Transformers</td></tr> <tr><td><strong>⚡ Acceleration:</strong></td><td>GPU (CUDA) + CPU fallback</td></tr> </table>
+<table> <tr><td><strong>🌐 Frontend</strong></td><td>HTML · CSS · JavaScript (Flask Web UI)</td></tr> <tr><td><strong>🧠 Model</strong></td><td>Fine-tuned T5 (HuggingFace Transformers)</td></tr> <tr><td><strong>⚙️ Backend</strong></td><td>Python · PyTorch · Flask</td></tr> <tr><td><strong>⚡ Acceleration</strong></td><td>GPU (CUDA) + CPU Fallback</td></tr> </table>
 🎥 Live Demo Video
-▶ Watch the demo on Google Drive
 
-👉 https://drive.google.com/file/d/1pM-ir9_qf6cGBvw2IQcFUXLywdIyesSd/view?usp=sharing
-
-A short video showing the full workflow, UI, and summarization performance.
+▶ Watch the full UI demo & summarization workflow:
+https://drive.google.com/file/d/1pM-ir9_qf6cGBvw2IQcFUXLywdIyesSd/view?usp=sharing
 
 ✨ Key Features
 
-🎨 Beautiful, clean, responsive Web UI
+🎨 Modern, responsive Web UI
 
-🧠 Fine-tuned T5 chat summarizer for accurate multi-turn conversation summaries
+🧠 Fine-tuned T5 summarizer for multi-turn conversations
 
 🔧 Smart dynamic output-length control
 
-🧵 Beam search → smoother, more fluent summaries
+🧵 Beam search → smoother summaries
 
 🚀 GPU acceleration when available
 
-📁 Upload conversation files, paste text, and copy summary
+📁 Paste or upload conversations
 
-🛡️ Minimal hallucinations (tuned prompts + strict decoding)
+📋 Copy-to-clipboard summary output
 
-🧩 How This Project Was Built
+🛡️ Minimal hallucination (prompt tuning + strict decoding)
+
+🧩 How the Project Was Built
 1️⃣ Dataset Creation
 
-Designed multiple chat-summary pairs
+Designed multiple chat–summary pairs
 
-Included short, medium, long conversations
+Short, medium, and long conversations
 
-Ensured low hallucination & high semantic relevance
+Low hallucination handling
+
+High semantic accuracy
 
 2️⃣ Fine-Tuning T5
 
-Used HuggingFace Transformers
+HuggingFace Transformers + PyTorch
 
-PyTorch training loop with AMP & AdamW
+AMP + AdamW optimizer
 
-Tuned max_length, beam search, repetition penalties
+Tuned decoding parameters
 
-Implemented adaptive summary-length logic
+Length-adaptive summarization logic
 
-3️⃣ Building the Web UI
+3️⃣ Web Application Development
 
-Flask backend (REST API)
+REST API using Flask
 
-HTML + CSS + JS responsive interface
+Responsive HTML/CSS/JS UI
 
-Real-time summarization
+Live summarization
 
-Clean UI interactions (paste, upload, copy output)
+Clean UX (upload, paste, copy)
 
 4️⃣ Packaging & Deployment
 
-Optimized folder structure
+Production-ready project structure
 
-GPU/CPU compatible
+CPU/GPU compatible
 
-Ready for local use or server deployment
+Easy to run locally
 
-⚡ Quick Start — Web Version
+Simple for deployment
+
+⚡ Quick Start — Web App
 1️⃣ Install dependencies
 pip install -r requirements.txt
 
-2️⃣ Run the Flask server
+2️⃣ Run the server
 python app.py
 
 3️⃣ Open the app
@@ -84,8 +88,8 @@ http://localhost:5000
 │   └── index.html           # Web UI
 │
 ├── static/
-│   ├── style.css            # Frontend styling
-│   └── script.js            # UI interactivity
+│   ├── style.css            # UI styling
+│   └── script.js            # Frontend JS logic
 │
 ├── t5_summarizer/           # Fine-tuned T5 model + tokenizer
 │
@@ -100,11 +104,11 @@ Agent: Clean the charging port; it may be dusty.
 
 Generated Summary
 
-User’s phone isn’t charging. The agent suggests trying a different cable and cleaning the dusty charging port.
+User’s phone isn’t charging. The agent recommends trying another cable and cleaning the dusty charging port.
 
 📬 Contact
 
-If you'd like to connect or collaborate:
+Feel free to connect or collaborate:
 
 📧 Email: chayan07ghosh@gmail.com
 
@@ -114,14 +118,15 @@ If you'd like to connect or collaborate:
 
 🧾 License
 
-Released under the MIT License. See LICENSE for details.
+Released under the MIT License.
+See the LICENSE file for details.
+
+⭐ Support the Project
 
 🌟 Star the repository
 
 🐛 Open an issue
 
-🔧 Suggest a feature
+🔧 Suggest new features
 
 🎉 Built with ❤️ by Chayan Ghosh
-
-
